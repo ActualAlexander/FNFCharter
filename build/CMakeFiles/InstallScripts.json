@@ -1,0 +1,8 @@
+{
+	"InstallScripts" : 
+	[
+		"D:/Coding/FNFCharter/build/cmake_install.cmake",
+		"D:/Coding/FNFCharter/build/_deps/json-build/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

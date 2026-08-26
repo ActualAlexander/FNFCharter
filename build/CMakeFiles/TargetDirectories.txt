@@ -1,0 +1,5 @@
+D:/Coding/FNFCharter/build/CMakeFiles/Main.dir
+D:/Coding/FNFCharter/build/CMakeFiles/edit_cache.dir
+D:/Coding/FNFCharter/build/CMakeFiles/rebuild_cache.dir
+D:/Coding/FNFCharter/build/_deps/json-build/CMakeFiles/edit_cache.dir
+D:/Coding/FNFCharter/build/_deps/json-build/CMakeFiles/rebuild_cache.dir
