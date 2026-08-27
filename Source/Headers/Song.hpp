@@ -36,7 +36,9 @@ class Song {
         void stopSong();
         void calculateBeatsAndSteps(float deltaTime);
         void loadFromJson();
-    
+        void drawSection(int sectionNumber, float width);
+        void manageSections();
+
     private:
         bool voicesCanPlay = false;
         bool instCanPlay = false;

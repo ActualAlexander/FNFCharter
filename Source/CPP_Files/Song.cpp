@@ -114,3 +114,54 @@ void Song::loadFromJson() {
         std::cout << songName + "-" + diffculty + ".json wasn't found";
     }
 }
+
+
+void Song::drawSection(int sectionNumber, float width) {
+    
+    size_t color_Index;
+    
+    Vector2 sectionPosition = {0, 0};
+
+    bool isRowEven;
+    
+    float totalSectionWidth = width * (sections.at(sectionNumber).sectionStep - 1);
+    float yPositionBuffer = totalSectionWidth * sectionNumber;
+
+    
+    for (size_t i = 0; i < sections.at(sectionNumber).sectionStep; i++) {
+        isRowEven = i % 2 == 0;
+        for (size_t j = 0; j < sections.at(sectionNumber).noteNumber; j++) {
+            
+            color_Index = j % 2 == 0;
+            sectionPosition.x = width * j;
+            sectionPosition.y = width * i + yPositionBuffer;
+            DrawRectangle(
+                sectionPosition.x, sectionPosition.y, 
+                width, width, 
+                sections.at(sectionNumber).sectionColors.at(
+                    isRowEven ?
+                    color_Index :
+                    !color_Index
+                )
+            );
+        }
+        
+    }
+}
+
+void Song::manageSections() {
+    for(size_t i = 0; i < sections.size(); i++ ) {
+        // if (curBeat >= sections.at(i).sectionBeat * (i)) {
+        //     sections.at(i).isSectionActive = false;
+        // } else {
+        //     sections.at(i).isSectionActive = true;
+        // }
+
+        // if (sections.at(i).isSectionActive) {
+        //     sections.at(i).sectionColors = {DARKGRAY, GRAY};
+        // }
+        
+        drawSection(i, 50);
+    }
+}
+

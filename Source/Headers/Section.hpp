@@ -10,12 +10,16 @@
 class Section {
     public:
         int sectionBeat;
+        int sectionStep = sectionBeat * 4;
+        int noteNumber = 8;
+        int BPM;
         float startTime;
         float endTime;
         bool mustHitSection;
         bool changeBPM;
-        int BPM;
-
+        bool isSectionActive = false;
+        std::vector<Color> sectionColors = {WHITE, GRAY};
+        
 
         Section(int sectionBeat, bool mustHitSection, bool changeBPM, int BPM) : 
         sectionBeat(sectionBeat), mustHitSection(mustHitSection), changeBPM(changeBPM),
@@ -26,9 +30,8 @@ class Section {
 
 
     private:
-        bool isSectionActive = false;
-        int noteNumber = 8;
-        std::vector<Color> sectionColors = {WHITE, GRAY};
+
+        
 };
 
 #endif

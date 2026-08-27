@@ -64,8 +64,8 @@ void Start() {
 void Update(float deltaTime) {
     // grid.createGrid();
     // sectionalGrid();
-    song.sections.at(0).drawSection();
-    
+    // song.sections.at(0).drawSection();
+    song.manageSections();
 
    if (IsKeyPressed(KEY_SPACE)) {
         isSongPlayed = !isSongPlayed;
