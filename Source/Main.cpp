@@ -78,7 +78,7 @@ void Update(float deltaTime) {
     }
 
     if (isSongPlayed) {
-        camera.offset.y -= song.scrollSpeed;
+        camera.offset.y -= song.scrollSpeed * 3;
         song.calculateBeatsAndSteps(deltaTime);
 
     } 

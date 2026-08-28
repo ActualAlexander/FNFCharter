@@ -123,7 +123,7 @@ void Song::drawSection(int sectionNumber, float width) {
     Vector2 sectionPosition = {0, 0};
 
     bool isRowEven;
-    
+    bool isSectionEven = sectionNumber % 2 == 0;
     float totalSectionWidth = width * (sections.at(sectionNumber).sectionStep - 1);
     float yPositionBuffer = totalSectionWidth * sectionNumber;
 
@@ -139,9 +139,13 @@ void Song::drawSection(int sectionNumber, float width) {
                 sectionPosition.x, sectionPosition.y, 
                 width, width, 
                 sections.at(sectionNumber).sectionColors.at(
-                    isRowEven ?
-                    color_Index :
-                    !color_Index
+                    isSectionEven ?
+                        isRowEven ?
+                        color_Index:
+                        !color_Index :
+                        isRowEven?
+                        !color_Index:
+                        color_Index
                 )
             );
         }
@@ -156,12 +160,25 @@ void Song::manageSections() {
         // } else {
         //     sections.at(i).isSectionActive = true;
         // }
+        if (sections.at(i).isSectionActive) {
+            sections.at(i).sectionColors = {WHITE, GRAY};
+        }
 
-        // if (sections.at(i).isSectionActive) {
-        //     sections.at(i).sectionColors = {DARKGRAY, GRAY};
-        // }
+        if (!sections.at(i).isSectionActive) {
+            sections.at(i).sectionColors = {DARKGRAY, GRAY};
+        }
+
+        if (curStep <= sections.at(i).sectionStep * (i + 1) && curStep >= sections.at(i).sectionStep * i) {
+            sections.at(i).isSectionActive = true;
+        } else {
+            sections.at(i).isSectionActive = false;
+        }
+
         
-        drawSection(i, 50);
+
+        if(i < 10 ) std::cout << "Section " + std::to_string(i) + " is " + std::to_string(sections.at(i).isSectionActive) << std::endl;  
+
+        if(i < 10) drawSection(i, 50);
     }
 }
 
