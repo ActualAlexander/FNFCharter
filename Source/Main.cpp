@@ -65,6 +65,8 @@ void Update(float deltaTime) {
     // grid.createGrid();
     // sectionalGrid();
     // song.sections.at(0).drawSection();
+    
+    
     song.manageSections();
 
    if (IsKeyPressed(KEY_SPACE)) {
@@ -77,8 +79,12 @@ void Update(float deltaTime) {
         }
     }
 
+
     if (isSongPlayed) {
-        camera.offset.y -= song.scrollSpeed * 3;
+        
+        camera.offset.y -= 50;
+        
+      
         song.calculateBeatsAndSteps(deltaTime);
 
     } 
@@ -92,8 +98,8 @@ void Update(float deltaTime) {
 
 void UpdateUI(float deltaTime) {
     // std::cout <<  std::to_string(song.curBeat) << std::endl;
-    DrawText(("Beats : " + std::to_string(song.curBeat)).c_str(), 250, 10, 20, WHITE);
-    DrawText(("Steps : " + std::to_string(song.curStep)).c_str(), 250, 35, 20, WHITE);
+    DrawText(("Beats : " + std::to_string(song.curBeat)).c_str(), 450, 10, 20, WHITE);
+    DrawText(("Steps : " + std::to_string(song.curStep)).c_str(), 450, 35, 20, WHITE);
     
 }
 

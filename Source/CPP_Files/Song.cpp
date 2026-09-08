@@ -65,6 +65,7 @@ void Song::calculateBeatsAndSteps(float deltaTime) {
 
     float secondsPerBeat = minInSeconds/BPM;
     //  I Step = 1/4 Beats -> 1 secondsPerStep = 1/4 secondsPerBeat
+    //TODO: Fix this, Steps are way faster than intended, plus this needs a remake.
     float secondsPerStep = secondsPerBeat / 4;
     
     if (beatTimer >= secondsPerBeat) {
@@ -142,7 +143,7 @@ void Song::drawSection(int sectionNumber, float width) {
                     isSectionEven ?
                         isRowEven ?
                         color_Index:
-                        !color_Index :
+                        !color_Index : //Don't even try >_>
                         isRowEven?
                         !color_Index:
                         color_Index
@@ -178,7 +179,11 @@ void Song::manageSections() {
 
         if(i < 10 ) std::cout << "Section " + std::to_string(i) + " is " + std::to_string(sections.at(i).isSectionActive) << std::endl;  
 
-        if(i < 10) drawSection(i, 50);
+        if (sections.at(i).isSectionActive) {
+            drawSection(i, 50);
+            drawSection(i + 1, 50);
+            drawSection(i - 1, 50);
+        }
+
     }
 }
-
